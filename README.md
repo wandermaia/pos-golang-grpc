@@ -136,12 +136,64 @@ Serão gerados dois arquivos na pasta `internal/pb`.
 
 Instale a extensão `vscode-proto3` para auxiliar na criaçaõ dos protofiles.
 
+## Evans
+
+
+Para interagir com o servidor gRPC, vamos utilizar o `Evans`. Ele necessita de reflection.
+
+
+Criar a tabela no banco de dados
+
+```bash
+
+wander@bsnote283:~/repos/CURSO-GO/12gRPC/pos-golang-grpc$ sqlite3 db.sqlite
+SQLite version 3.37.2 2022-01-06 13:25:41
+Enter ".help" for usage hints.
+sqlite> create table categories (id string, name string, description string);
+sqlite> 
+
+```
+
+Abaixo segue um exemplo de utilização do Evans:
+
+```bash
+
+wander@bsnote283:~/repos/CURSO-GO/12gRPC$ evans -r repl
+
+  ______
+ |  ____|
+ | |__    __   __   __ _   _ __    ___
+ |  __|   \ \ / /  / _. | | '_ \  / __|
+ | |____   \ V /  | (_| | | | | | \__ \
+ |______|   \_/    \__,_| |_| |_| |___/
+
+ more expressive universal gRPC client
+
+
+127.0.0.1:50051> package pb
+
+pb@127.0.0.1:50051> service CategoryService
+
+pb.CategoryService@127.0.0.1:50051> call CreateCategory
+name (TYPE_STRING) => Cat 2
+description (TYPE_STRING) => Cat 2 Desc
+{
+  "description": "Cat 2 Desc",
+  "id": "8dd8b38d-7e2c-46ae-b35a-d64d83802ebc",
+  "name": "Cat 2"
+}
+
+pb.CategoryService@127.0.0.1:50051> 
+
+```
+
 
 ## Referências
 
 gRPC IO
 
 https://grpc.io
+
 
 Protocol Buffers
 
@@ -152,3 +204,7 @@ Protocol Buffer Compiler Installation
 
 https://grpc.io/docs/protoc-installation/
 
+
+Evans
+
+https://github.com/ktr0731/evans

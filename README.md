@@ -117,6 +117,24 @@ go mod init github.com/wandermaia/pos-golang-grpc
 
 ```
 
+## Utilização do protoc
+
+Exemplo:
+
+
+```bash
+
+protoc --go_out=. --go-grpc_out=. proto/course_category.proto
+
+go mod tidy
+
+```
+
+Serão gerados dois arquivos na pasta `internal/pb`.
+
+## Dicas
+
+Instale a extensão `vscode-proto3` para auxiliar na criaçaõ dos protofiles.
 
 
 ## Referências
